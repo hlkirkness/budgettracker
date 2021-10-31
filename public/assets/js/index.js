@@ -15,10 +15,12 @@ initTransactions();
 
 document.querySelector("#add-btn").onclick = function () {
   sendTransaction(true);
+  console.log("Plus button was clicked")
 };
 
 document.querySelector("#sub-btn").onclick = function () {
   sendTransaction(false);
+  console.log("Minus button was clicked")
 };
 
 function createTransactionForm() {
