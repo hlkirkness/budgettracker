@@ -8,12 +8,12 @@ const FILES_TO_CACHE = [
     "/assets/images/icons/icon-512x512.png",
     "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
     "https://cdn.jsdelivr.net/npm/chart.js@2.8.0"
-  ];
+];
   
-  const CACHE_NAME = "static-cache-v1";
-  const DATA_CACHE_NAME = "data-cache-v1";
+const CACHE_NAME = "static-cache-v1";
+const DATA_CACHE_NAME = "data-cache-v1";
   
-  self.addEventListener("install", (evt) => {
+self.addEventListener("install", (evt) => {
     evt.waitUntil(
       caches.open(CACHE_NAME).then((cache) => {
         return cache.addAll(FILES_TO_CACHE);
@@ -38,9 +38,9 @@ const FILES_TO_CACHE = [
     );
   
     self.clients.claim();
-  });
+});
   
-  self.addEventListener("fetch", (evt) => {
+self.addEventListener("fetch", (evt) => {
     // cache successful GET requests to the API
     if (evt.request.url.includes("/api/") && evt.request.method === "GET") {
       evt.respondWith(
@@ -75,4 +75,4 @@ const FILES_TO_CACHE = [
         return response || fetch(evt.request);
       })
     );
-  });
+});
